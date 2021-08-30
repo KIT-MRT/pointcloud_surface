@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package format="2">
+  <name>pointcloud_surface</name>
+  <version>0.0.0</version>
+  <description>Surface estimation methods based on point clouds.</description>
+
+  <license>MRT</license>
+  <maintainer email="kevin.roesch@kit.edu">Kevin Rösch</maintainer>
+  <author email="wirges@fzi.de">Sascha Wirges</author>
+  <url type="repository">https://github.com/KIT-MRT/pointcloud_surface</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>mrt_cmake_modules</build_depend>
+
+  <test_depend>gtest</test_depend>
+
+  <depend>libgoogle-glog-dev</depend>
+  <depend>libceres-dev</depend>
+  <depend>libpcl-all-dev</depend>
+  <depend>uniform_bspline_ceres</depend>
+  <depend>uniform_bspline_eigen</depend>
+  <depend>util_ceres</depend>
+  <depend>util_eigen</depend>
+  <depend>util_yaml</depend>
+
+  <export>
+  </export>
+</package>

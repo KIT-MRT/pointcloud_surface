@@ -1,0 +1,30 @@
+ground_surface_estimation:
+  method: 3 # plane_estimation_ceres = 0, plane_estimation_sac = 1, uniform_b_spline_estimation_ceres = 2, uniform_b_spline_estimation_eigen = 3, none = 4
+  num_iterations: 1
+  point_labeler: 2 # constant = 0, geman_mcclure = 1, truncated_least_squares = 2
+  distance_threshold: 0.4
+  mu: 5
+  asymmetry_ratio: 2
+  common:
+    plane_normal_x: 0
+    plane_normal_y: 0
+    plane_normal_z: 1
+    plane_offset: 0
+    range_min_x: -50
+    range_min_y: -50
+    range_max_x: 100
+    range_max_y: 50
+  plane:
+    sac:
+      inlier_threshold: 0.2
+      eps_angle: 10
+      max_iterations: 300
+      optimize_coefficients: true
+      probability: 0.99
+  uniform_b_spline:
+    distance_control_points_x: 5 # in meters
+    distance_control_points_y: 5 # in meters
+    weight_smoothness: 10
+    smoothness_order: 1 # 0: first, 1: second
+  ceres:
+    val: 1
