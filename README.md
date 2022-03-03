@@ -27,12 +27,12 @@ The repository is organized in the following format:
 
 ```bash
 pointcloud_surface/
-          ├── include/                                              # header files
+          ├── include/                  # header files
           ├── res/
-                ├── assets/                                         # images for the github repo
-                └── parameters.yaml                                 # parameter file
-          ├── src/                                                  # source code including all cpp files
-          └── test/                                                 # unit test for the ground surface estimation
+                ├── assets/             # images for the github repo
+                └── parameters.yaml     # parameter file
+          ├── src/                      # source code including all cpp files
+          └── test/                     # unit test for the ground surface estimation
 
 ```
 
