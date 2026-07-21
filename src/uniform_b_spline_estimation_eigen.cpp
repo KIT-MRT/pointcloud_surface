@@ -1,6 +1,12 @@
 #include "uniform_b_spline_estimation_eigen.hpp"
 
-#include <Eigen/CholmodSupport>
+// Eigen's CholmodSupport header does an unqualified `#include <cholmod.h>`,
+// which only resolves when SuiteSparse's include directory is on the compiler
+// search path (on Debian/Ubuntu the header lives in /usr/include/suitesparse).
+// Use Eigen's built-in, header-only SimplicialLDLT sparse Cholesky solver
+// instead: it exposes the same compute()/solve() interface and removes the
+// SuiteSparse build dependency entirely.
+#include <Eigen/SparseCholesky>
 
 namespace pointcloud_surface::ground_surface_estimation::uniform_b_spline::eigen {
 
@@ -34,7 +40,7 @@ void Estimator::estimate() {
     CHECK_EQ(y_.size(), w_.size());
     bool success{false};
     if (Base::p_.weight_smoothness > 0) {
-        Eigen::CholmodSimplicialLDLT<Eigen::SparseMatrix<double>> solver;
+        Eigen::SimplicialLDLT<Eigen::SparseMatrix<double>> solver;
         switch (Base::p_.smoothness_order) {
         case SmoothnessOrder::first:
             success = spline_eigen_.template solveWeighted<1>(
