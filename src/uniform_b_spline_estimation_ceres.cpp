@@ -49,7 +49,7 @@ void Estimator::addMeasurements_(const int num_measurements) {
     std::vector<double*> parameters(static_cast<size_t>(spline_ceres_.ControlPointsSupport));
     for (int c = measurements_.cols() - num_measurements; c < measurements_.cols(); c++) {
         const Eigen::Vector3d p{measurements_.col(c).cast<double>()};
-        const Eigen::Vector2d& p2d{p.head<2>()};
+        const Eigen::Vector2d p2d(p.head<2>());
         if (Base::spline_.inRange(p2d)) {
             const auto data{spline_ceres_.getPointData(p2d)};
             spline_ceres_.fillParameterPointers(data, std::begin(parameters), std::end(parameters));

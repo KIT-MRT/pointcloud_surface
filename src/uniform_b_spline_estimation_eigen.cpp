@@ -16,7 +16,7 @@ void Estimator::addMeasurements_(const int num_measurements) {
     w_.conservativeResize(weights_.size());
     for (int c = measurements_.cols() - num_measurements; c < measurements_.cols(); c++) {
         const Eigen::Vector3d p{measurements_.col(c).template cast<double>()};
-        const Eigen::Vector2d& p2d{p.template head<2>()};
+        const Eigen::Vector2d p2d(p.template head<2>());
         if (Base::spline_.inRange(p2d)) {
             x_[num_valid_measurements] = p2d;
             y_[num_valid_measurements] = p.z();
